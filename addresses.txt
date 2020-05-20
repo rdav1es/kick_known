@@ -1,0 +1,7 @@
+BSSID=      04:1E:FF:EF:D7:C1
+
+Device1=    D6:C9:4B:AF:EF:E6
+Device2=    63:20:FD:0B:E4:FB
+Device3=    B6:AC:FF:CF:3F:19
+Device4=    80:CF:AD:8A:29:EC
+Device5=    29:DC:95:7E:61:67
